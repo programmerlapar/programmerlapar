@@ -11,7 +11,8 @@ Open to remote full-stack, product engineering, and AI-agent platform opportunit
 ## Featured Work
 
 - [**Flowtive**](https://github.com/programmerlapar/flowtive-app) - Offline-first project management for Kanban, sprints, analytics, LAN sync, and AI-agent collaboration. Available on the web, desktop, Chrome, VS Code, and MCP clients.
-- [**Cycles**](https://github.com/programmerlapar/Cycles) - Deterministic multi-agent engineering framework for task claiming, implementation, PR review, quality gates, and Flowtive-based delivery workflows.
+- [**Cycles**](https://github.com/programmerlapar/Cycles) - Human-gated engineering loop.
+  Flowtive tasks flow through Flowtive MCP and OpenClaw to an Engineer that runs every 10 minutes and implements through OpenCode ACP. A Reviewer runs every 15 minutes to gate PRs and route rework back to Flowtive.
 - [**openclaw-migrate**](https://github.com/programmerlapar/openclaw-migrate) - Cross-platform CLI that safely exports, inspects, restores, and rolls back OpenClaw agent environments.
 - [**Atlas Photo**](https://github.com/programmerlapar/atlas-photo) - Privacy-first Electron photo application with local EXIF/GPS processing, interactive maps, thumbnail caching, and cross-platform packaging.
 
