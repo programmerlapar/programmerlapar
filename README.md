@@ -15,16 +15,32 @@ Open to remote full-stack, product engineering, and AI-agent platform opportunit
   Flowtive tasks flow through Flowtive MCP and OpenClaw to an Engineer that runs every 10 minutes and implements through OpenCode ACP. A Reviewer runs every 15 minutes to gate PRs and route rework back to Flowtive.
 
 ```mermaid
-flowchart LR
+flowchart TB
     F[Flowtive task] --> M[Flowtive MCP]
-    M --> C[OpenClaw and Cycles]
-    C --> E[Engineer\nevery 10 minutes]
+    M --> O[OpenClaw and Cycles]
+    O --> ED[Engineer discovery\nselect eligible task\nevery 10 minutes]
+    ED --> E[Engineer]
     E --> A[OpenCode via ACP]
     A --> P[Pull request]
-    P --> R[Reviewer\nevery 15 minutes]
+
+    O --> RD[Reviewer discovery\nPR work first\nevery 15 minutes]
+    P --> RD
+    RD -->|PR ready| R[Review PR and task evidence]
     R -->|Pass| H[Human merge approval]
     R -->|Rework| F
+    RD -->|No PR and scan due| I[Read-only risk scan\nmax once per 4 hours per project]
+    I --> RF[Reviewer finding]
+    RF --> F
+
+    O -. Planned .-> TD[Tester discovery\nPR awaiting verification\ncoming soon]
+    P -. PR awaits testing .-> TD
+    TD -. Planned .-> T[Tester verification\ntest, lint, typecheck, build\ncoming soon]
+    T -. Pass .-> R
+    T -. Fail .-> F
 ```
+
+The Tester path is planned but not active yet. It will verify PR-ready branches and
+record evidence before work proceeds to review or returns for rework.
 
 - [**openclaw-migrate**](https://github.com/programmerlapar/openclaw-migrate) - Cross-platform CLI that safely exports, inspects, restores, and rolls back OpenClaw agent environments.
 - [**Atlas Photo**](https://github.com/programmerlapar/atlas-photo) - Privacy-first Electron photo application with local EXIF/GPS processing, interactive maps, thumbnail caching, and cross-platform packaging.
