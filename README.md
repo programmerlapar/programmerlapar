@@ -16,31 +16,65 @@ Open to remote full-stack, product engineering, and AI-agent platform opportunit
 
 ```mermaid
 flowchart TB
-    F[Flowtive task] --> M[Flowtive MCP]
+    B[Backlog column\nnot auto-claimed]:::column
+    T[To Do column\nactive sprint]:::column
+    IP[In Progress column]:::column
+    RV[Review column]:::column
+    RF[Review Failed column]:::column
+    NR[Needs Rebase column]:::column
+    TF[Test Failed column]:::column
+    BL[Blocked column]:::column
+    D[Done column]:::column
+
+    B -. Human adds to sprint .-> T
+    T --> M[Flowtive MCP]
+    IP --> M
+    RF --> M
+    NR --> M
+    TF --> M
     M --> O[OpenClaw and Cycles]
-    O --> ED[Engineer discovery\nselect eligible task\nevery 10 minutes]
-    ED --> E[Engineer]
+
+    O --> ED[Engineer discovery\nresume owned work or select eligible task\nevery 10 minutes]:::engineer
+    ED -->|Eligible or rework| IP
+    IP --> E[Engineer implementation]:::engineer
     E --> A[OpenCode via ACP]
     A --> P[Pull request]
+    P --> RV
+    E -->|Blocker| BL
+    BL -. Human resolves .-> IP
 
-    O --> RD[Reviewer discovery\nPR work first\nevery 15 minutes]
-    P --> RD
-    RD -->|PR ready| R[Review PR and task evidence]
+    ED -->|No eligible task and improvement enabled| ID[Engineer improvement discovery\nrate-limited per project]:::engineer
+    ID --> S[Suggestion column\nhuman promotes to To Do]:::column
+    S -. Human promotion .-> T
+    ED -->|No eligible task; no discovery due| EQ[Quiet exit]
+
+    RV --> RD[Reviewer discovery\nPR work first\nevery 15 minutes]:::reviewer
+    O --> RD
+    RD -->|Reviewable PR| R[Review PR and task evidence]:::reviewer
     R -->|Pass| H[Human merge approval]
-    R -->|Rework| F
-    RD -->|No PR and scan due| I[Read-only risk scan\nmax once per 4 hours per project]
-    I --> RF[Reviewer finding]
-    RF --> F
+    H --> D
+    R -->|P0/P1 findings| RF
+    R -->|Merge conflict| NR
+    RD -->|No PR and scan due| I[Read-only risk scan\nmax once per 4 hours per project]:::reviewer
+    I --> F[Reviewer finding\nfiled in To Do]:::reviewer
+    F --> T
+    RD -->|No PR; scan not due| RQ[Quiet exit]
 
-    O -. Planned .-> TD[Tester discovery\nPR awaiting verification\ncoming soon]
-    P -. PR awaits testing .-> TD
-    TD -. Planned .-> T[Tester verification\ntest, lint, typecheck, build\ncoming soon]
-    T -. Pass .-> R
-    T -. Fail .-> F
+    P -. Planned testing path .-> TD[Tester discovery\nPR awaiting verification\ncoming soon]:::tester
+    TD -. Planned .-> TV[Tester verification\ntest, lint, typecheck, build\ncoming soon]:::tester
+    TV -. Pass .-> RV
+    TV -. Fail .-> TF
+
+    classDef column fill:#f8fafc,stroke:#64748b,color:#334155;
+    classDef engineer fill:#dbeafe,stroke:#2563eb,color:#1e3a8a;
+    classDef reviewer fill:#f3e8ff,stroke:#9333ea,color:#581c87;
+    classDef tester fill:#f8fafc,stroke:#94a3b8,stroke-dasharray: 5 5,color:#64748b;
 ```
 
-The Tester path is planned but not active yet. It will verify PR-ready branches and
-record evidence before work proceeds to review or returns for rework.
+Blue nodes are Engineer paths; purple nodes are Reviewer paths; muted, dashed nodes
+are the planned Tester path. Backlog tasks are intentionally excluded until a human
+adds them to an active sprint. The Tester role is not active yet; it will verify
+PR-ready branches and record evidence before work proceeds to review or rework.
 
 - [**openclaw-migrate**](https://github.com/programmerlapar/openclaw-migrate) - Cross-platform CLI that safely exports, inspects, restores, and rolls back OpenClaw agent environments.
 - [**Atlas Photo**](https://github.com/programmerlapar/atlas-photo) - Privacy-first Electron photo application with local EXIF/GPS processing, interactive maps, thumbnail caching, and cross-platform packaging.
