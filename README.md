@@ -1,16 +1,16 @@
 # Firmansyah Otoluwa
 
-## Full-Stack TypeScript Engineer
+## Full-Stack Web, Mobile, And AI Engineer
 
-I build AI-agent workflows, serverless SaaS, and privacy-first desktop products.
+I build AI-agent workflows, serverless SaaS, and privacy-first web, mobile, and desktop products.
 
-**React** · **Next.js** · **TypeScript** · **Node.js** · **AWS Amplify Gen 2** · **Electron** · **MCP**
+**React** · **React Native** · **Expo** · **Next.js** · **TypeScript** · **Node.js** · **AWS Amplify Gen 2** · **Electron** · **MCP**
 
-Open to remote full-stack, product engineering, and AI-agent platform opportunities.
+Open to remote full-stack, React Native/Expo, product engineering, and AI-agent platform opportunities.
 
 ## Featured Work
 
-- [**Flowtive**](https://github.com/programmerlapar/flowtive-app) - Offline-first project management for Kanban, sprints, analytics, LAN sync, and AI-agent collaboration. Available on the web, desktop, Chrome, VS Code, and MCP clients.
+- **Flowtive** (private codebase; public releases and extensions) - Offline-first project management for Kanban, sprints, analytics, LAN sync, and AI-agent collaboration. Available on the [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=kreaticode.flowtive), [Open VSX](https://open-vsx.org/extension/kreaticode/flowtive), and the [Chrome Web Store](https://chromewebstore.google.com/detail/flowtive-project-manageme/jlakbgpoiloflldfdjfmjijafibgadno); public [release assets](https://github.com/programmerlapar/flowtive-releases) include signed desktop installers.
 - **Cycles** (private) - Human-gated engineering loop.
   Flowtive tasks flow through Flowtive MCP and OpenClaw to an Engineer that runs every 10 minutes and implements through OpenCode ACP. A Reviewer runs every 15 minutes to gate PRs and route rework back to Flowtive.
 
@@ -82,7 +82,7 @@ PR-ready branches and record evidence before work proceeds to review or rework.
 
 ## Product And Platform Experience
 
-- Full-stack product development with React, Next.js, TypeScript, and Node.js
+- Full-stack web and mobile development with React, React Native, Expo, Next.js, TypeScript, and Node.js
 - Serverless architecture with AWS Amplify Gen 2, Cognito, DynamoDB, S3, Lambda, and GraphQL
 - AI workflows and developer tooling with Gemini, MCP, and agent orchestration
 - Cross-platform desktop applications with Electron, Vite, and local-first data handling
