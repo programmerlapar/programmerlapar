@@ -55,8 +55,9 @@ flowchart TB
     H --> D
     R -->|P0/P1 findings| RF
     R -->|Merge conflict| NR
+    R -->|P2/P3 follow-up| F
     RD -->|No PR and scan due| I[Read-only risk scan\nmax once per 4 hours per project]:::reviewer
-    I --> F[Reviewer finding\nfiled in To Do]:::reviewer
+    I --> F[Reviewer finding or P2/P3 follow-up\nfiled in To Do]:::reviewer
     F --> T
     RD -->|No PR; scan not due| RQ[Quiet exit]
 
