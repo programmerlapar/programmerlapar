@@ -12,6 +12,8 @@ Open to remote full-stack, React Native/Expo, product engineering, and AI-agent 
 
 - **Cycles** (private) - Autonomous engineering orchestration connecting Flowtive, Flowtive MCP, OpenClaw, OpenCode ACP, GitHub pull requests, and human review. An Engineer claims and implements work; an independent Reviewer gates PRs and routes rework back to Flowtive.
 
+- [**Knowledge Evolution Protocol**](https://github.com/programmerlapar/knowledge-evolution-protocol) - Portable brain-first knowledge protocol for AI coding agents, with retrieve-before and capture-after workflows, QMD search, durable issue capture, and OpenCode/OpenClaw integration.
+
 - **Flowtive** (private source; public distribution) - Offline-first project management for Kanban, sprints, analytics, LAN sync, and AI-agent collaboration.
   - [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=kreaticode.flowtive) · [Open VSX](https://open-vsx.org/extension/kreaticode/flowtive) · [Chrome Web Store](https://chromewebstore.google.com/detail/flowtive-project-manageme/jlakbgpoiloflldfdjmjijafibgadno)
   - [Public releases and privacy policy](https://github.com/programmerlapar/flowtive-releases)
